@@ -77,6 +77,13 @@ public class CustomerPurchasesTest {
         assertEquals(customerPurchases.getServiceCharge(), 1.6, DELTA);
     }
 
+    @Test
+    public void testServiceChargeTo2DecimalPlaces() {
+        addAllItems();
+
+        assertEquals(customerPurchases.getServiceChargeRounded(), "1.60");
+    }
+
     private void addAllItems() {
         customerPurchases.addMenuItem(menu.getMenuItem("cola"));
         customerPurchases.addMenuItem(menu.getMenuItem("coffee"));
