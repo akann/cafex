@@ -84,6 +84,25 @@ public class CustomerPurchasesTest {
         assertEquals(customerPurchases.getServiceChargeRounded(), "1.60");
     }
 
+    @Test
+    public void testCappedServiceChargeUnder2Pounds() {
+        addAllItems();
+        assertEquals(customerPurchases.getCappedServiceCharge(), 1.6, DELTA);
+
+    }
+
+    @Test
+    public void testCappedServiceChargeOver2Pounds() {
+        addAllItems();
+
+        customerPurchases.addMenuItem(menu.getMenuItem("steak sandwich"));
+        customerPurchases.addMenuItem(menu.getMenuItem("steak sandwich"));
+        customerPurchases.addMenuItem(menu.getMenuItem("steak sandwich"));
+        customerPurchases.addMenuItem(menu.getMenuItem("steak sandwich"));
+
+        assertEquals(customerPurchases.getCappedServiceCharge(), 2.0, DELTA);
+    }
+
     private void addAllItems() {
         customerPurchases.addMenuItem(menu.getMenuItem("cola"));
         customerPurchases.addMenuItem(menu.getMenuItem("coffee"));
