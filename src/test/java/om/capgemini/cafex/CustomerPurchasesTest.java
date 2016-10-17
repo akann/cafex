@@ -103,6 +103,13 @@ public class CustomerPurchasesTest {
         assertEquals(customerPurchases.getCappedServiceCharge(), 2.0, DELTA);
     }
 
+    @Test
+    public void testTotalPricePlusServiceCharge() {
+        addAllItems();
+
+        assertEquals(customerPurchases.getCappedServiceCharge() + customerPurchases.getTotalPrice(), 9.6, DELTA);
+    }
+
     private void addAllItems() {
         customerPurchases.addMenuItem(menu.getMenuItem("cola"));
         customerPurchases.addMenuItem(menu.getMenuItem("coffee"));
