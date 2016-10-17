@@ -27,9 +27,9 @@ public class CustomerPurchasesTest {
         menu = new CafeXMenu(
                 new HashMap<String, MenuItem>(){{
                     put("cola",           new MenuItem("Cola", "Cold Drink",           0.5));
-                    put("coffee",         new MenuItem("Coffee", "Hot Drink",          1.0));
+                    put("coffee",         new HotFoodItem("Coffee", "Hot Drink",          1.0));
                     put("chess sandwich", new MenuItem("Cheese Sandwich", "Cold Food", 2.0));
-                    put("steak sandwich", new MenuItem("Steak Sandwich", "Hot Food",   4.5));
+                    put("steak sandwich", new HotFoodItem("Steak Sandwich", "Hot Food",   4.5));
                 }}
         );
     }
@@ -74,7 +74,7 @@ public class CustomerPurchasesTest {
     public void testCustomerPurchaseServiceCharge() {
         addAllItems();
 
-        assertEquals(customerPurchases.getServiceCharge(), 0.8, DELTA);
+        assertEquals(customerPurchases.getServiceCharge(), 1.6, DELTA);
     }
 
     private void addAllItems() {
